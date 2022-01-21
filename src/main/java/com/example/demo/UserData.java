@@ -1,16 +1,27 @@
 package com.example.demo;
+
+import org.springframework.web.bind.annotation.RestController;
+
 @RestController
 
 
 
 @Entity
 public class UserData {
-
+    @NotBlank
+    @Size(max=25)
 	private Integer Name;
+    @NotBlank
 	private String gender;
+    @NotBlank
+    @DateTimeFormat(pattern="DD-MON-YY")
 	private String dob;
+    @NotBlank
+    @Size(max=50)
 	private String address;
+    @Size(max=50)
 	private String city;
+    
 	private String state;
 	private String pin;
 	private String TelephoneNumber;

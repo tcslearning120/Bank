@@ -1,10 +1,15 @@
-package com.example.demo.account;
+package com.bank.main.account;
 
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+@Entity
 public class addingAccount {
+	@Id
 	@NotNull
 	@Size(max = 10)
 	private String customerID;

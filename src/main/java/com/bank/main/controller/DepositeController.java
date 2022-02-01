@@ -1,33 +1,30 @@
 package com.bank.main.controller;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bank.main.entity.UserData;
-import com.bank.main.service.BankUserService;
+import com.bank.main.entity.Deposite;
 
+import com.bank.main.service.DepositeService;
 
 @RestController
-public class UserController {
+public class DepositeController {
+	
 	@Autowired
-	BankUserService userService;
-	@GetMapping ("/user")
-	void getUsers(){
-	//	return userService.getUsers();
-	System.out.println("testing");
-	}
-	@PostMapping("/user")
+	private DepositeService  depositeService;
+	
+	@PostMapping("/deposite")
+	@Transactional
 	@ResponseStatus(code = HttpStatus.CREATED)
-void createUser(@RequestBody  @Valid UserData user){
-		System.out.println(user.getName());
-	userService.saveUser(user);
+	void addDeposite(@RequestBody @Valid Deposite deposite)throws Exception {
+		depositeService.addDeposite(deposite);
+	}
+	
 }
-}
-
